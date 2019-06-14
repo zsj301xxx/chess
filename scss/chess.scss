@@ -1,0 +1,77 @@
+@import "var";
+.box{
+  width: $w;
+  height: $w;
+  background: #8a8c8d;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  position: absolute;
+  margin: auto;
+  z-index: -2;
+}
+.heng{
+  width: $w -$r*2;
+  height: 1px;
+  position: absolute;
+  background: black;
+  left: $r;
+  transform: translate3d(-300%,0,0);
+  animation: through 1s 1 ease-in forwards;
+   z-index: -1;
+}
+.shu{
+  height: $w -$r*2;
+  width: 1px;
+  position: absolute;
+  background: black;
+  top: $r;
+  transform: translate3d(0,-300%,0);
+  animation: down 3s 1 ease-in forwards;
+  z-index: -1;
+}
+@for $number from 1 through 15{
+  i:nth-of-type(#{$number}){
+      top:$r*($number*2-1);
+    animation-delay:100ms*$number;
+  }
+  .shu:nth-of-type(#{$number}){
+   left:$r*($number*2-1);
+    animation-delay:100ms*$number;
+
+  }
+}
+@keyframes down {
+  from{
+    transform: translate3d(0,-300%,0);
+  }
+  to{
+    transform: translate3d(0,0,0);
+  }
+
+}
+@keyframes through {
+  from{
+    transform: translate3d(-300%,0,0);
+  }
+  to{
+    transform: translate3d(0,0,0);
+  }
+
+}
+.chess{
+   width: 2*$r;
+   height: 2*$r;
+  border-radius: 50%;
+  float: left;
+
+
+}
+.black{
+  background: black;
+}
+.white{
+  background: white;
+}
+
